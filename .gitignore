@@ -2,3 +2,6 @@
 hard-way/vagrant/\.vagrant/
 
 hard-way/vagrant/ubuntu-bionic-18\.04-cloudimg-console\.log
+kubeadm/vagrant/ubuntu-bionic-18.04-cloudimg-console.log
+
+kubeadm/vagrant/\.vagrant/
