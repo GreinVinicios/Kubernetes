@@ -77,7 +77,7 @@ sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://pack
 echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-get install -y kubelet=1.23.2-00 kubeadm=1.23.3-00 kubectl=1.23.3-00
 sudo apt-mark hold kubelet kubeadm kubectl
 
 sudo systemctl daemon-reload
@@ -115,6 +115,11 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 9 - Installing Pod network solution (weave)
 ```bash
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+```
+
+9.1 - Alternative Pod network solution (flannel)
+```bash
+kubeadm join 10.44.175.6:6443 --token t0bpzo.zogizrmqd8lrriek --discovery-token-ca-cert-hash sha256:07ae8ea70c36ce5e95f240fda6df884ee06b4548086afb03611355b980ad06af
 ```
 
 10 - Joining worker nodes
